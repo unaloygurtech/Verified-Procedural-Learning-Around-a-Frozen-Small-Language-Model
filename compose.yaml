@@ -1,0 +1,65 @@
+name: verified-procedural-learning-study
+
+services:
+  air-core:
+    build:
+      context: .
+      dockerfile: docker/air-core.Dockerfile
+    command: sleep infinity
+    user: vscode
+    working_dir: /workspace
+    environment:
+      AIR_MODEL_URL: ${AIR_MODEL_URL:-http://model-runtime:8080}
+      AIR_DB_PATH: ${AIR_DB_PATH:-/workspace/data/air.db}
+      AIR_CONTEXT_SIZE: ${AIR_CONTEXT_SIZE:-4096}
+    volumes:
+      - .:/workspace
+    networks:
+      - study-internal
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    init: true
+    depends_on:
+      - model-runtime
+
+  model-runtime:
+    image: ghcr.io/ggml-org/llama.cpp:server
+    command:
+      - -hf
+      - ${AIR_HF_MODEL:-ggml-org/SmolLM3-3B-GGUF:Q4_K_M}
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8080"
+      - --ctx-size
+      - ${AIR_CONTEXT_SIZE:-4096}
+      - --threads
+      - ${AIR_THREADS:-8}
+      - --n-gpu-layers
+      - ${AIR_GPU_LAYERS:-0}
+      - --metrics
+    expose:
+      - "8080"
+    volumes:
+      - verified-procedural-learning-study-model-cache:/root/.cache/huggingface
+    networks:
+      - study-internal
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    init: true
+    restart: unless-stopped
+
+networks:
+  study-internal:
+    driver: bridge
+
+volumes:
+  verified-procedural-learning-study-model-cache:
+    name: verified-procedural-learning-study-model-cache

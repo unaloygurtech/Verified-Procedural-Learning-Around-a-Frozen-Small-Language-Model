@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "verified-procedural-learning-study"
+version = "0.1.0"
+description = "Reproducible experimental study of verified procedural learning around a frozen small language model"
+requires-python = ">=3.12"
+
+[project.scripts]
+airctl = "air_core.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

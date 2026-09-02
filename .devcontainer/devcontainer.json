@@ -1,0 +1,17 @@
+{
+  "name": "Verified Procedural Learning Study",
+  "dockerComposeFile": "../compose.yaml",
+  "service": "air-core",
+  "runServices": ["air-core", "model-runtime"],
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "remoteUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  }
+}
