@@ -22,9 +22,10 @@ This repository is preserved as a finished research result. It is not an active 
 ## Verification status
 
 - 20 frozen experiment reports are included, covering Experiments 0001–0020.
-- 28 deterministic `unittest` modules are included, with experiment coverage through Experiment 0020.
+- 28 deterministic `unittest` modules are included, containing **144 test methods** in the current source tree and experiment coverage through Experiment 0020.
 - CLI parser coverage includes every runnable experiment command from 003 through 020; the persistence suite includes dedicated Experiment 0020 tests.
-- The frozen experiment record reports a Docker full-suite result of **138 tests passing**.
+- A historical frozen Docker run reports **138 tests passing**; this is kept separate from the current source-tree count.
+- GitHub Actions runs the deterministic test suite on every push and pull request.
 - Key numerical results are summarized in this README and preserved in the corresponding reports: 12/12 candidate coverage, 20/20 canonicalized acquisition, 32/32 persistent acquisition, 48/48 final transfer, 0 wrong activations, and 0/6 false canonical merges.
 
 ## Quick start
@@ -42,8 +43,8 @@ This repository is preserved as a finished research result. It is not an active 
 From a cloned checkout:
 
 ```bash
-git clone https://github.com/unaloygurtech/air.git
-cd air
+git clone https://github.com/unaloygurtech/Verified-Procedural-Learning-Around-a-Frozen-Small-Language-Model.git
+cd Verified-Procedural-Learning-Around-a-Frozen-Small-Language-Model
 cp .env.example .env
 docker compose up --build -d
 ```
@@ -69,6 +70,10 @@ The study separated two claims that are often conflated:
 2. **Base-model cognitive capability growth:** the frozen language model itself becomes better at novel semantic tasks.
 
 The experiments support the first claim only within a bounded task grammar. They do not support the second claim.
+
+## Related work and experiment history
+
+See [Related work](docs/RELATED_WORK.md) for the academic context and [Experiment timeline](docs/EXPERIMENT-TIMELINE.md) for the progression from 0001 through 0020.
 
 ## Implemented architecture
 
@@ -276,7 +281,7 @@ The runtime is designed around:
 
 ## Naming and compatibility
 
-The public research identity is **Verified Procedural Learning Around a Frozen Small Language Model**. The repository slug remains `air`, and internal runtime identifiers such as `air_core`, `air-core`, `airctl`, and `AIR_*` are retained solely for executable compatibility with the experiment code and saved protocols. They are not personal or host-specific identifiers.
+The public research identity and repository name are **Verified Procedural Learning Around a Frozen Small Language Model**. Internal runtime identifiers such as `air_core`, `air-core`, `airctl`, and `AIR_*` are retained solely for executable compatibility with the experiment code and saved protocols. They are not personal or host-specific identifiers.
 
 ## Repository structure
 
