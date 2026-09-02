@@ -288,6 +288,8 @@ The public research identity and repository name are **Verified Procedural Learn
 - `src/air_core/` — experiment runners, storage, retrieval, synthesis, verification, and execution;
 - `tests/` — deterministic unit and integration coverage;
 - `docs/experiments/` — the complete 0001–0020 experiment record;
+- `docs/RELATED_WORK.md` and `docs/EXPERIMENT-TIMELINE.md` — research positioning and experiment history;
+- `.github/workflows/tests.yml` — deterministic push and pull-request CI;
 - `compose.yaml` — reproducible service topology;
 - `.env.example` — non-secret runtime defaults;
 - `docker/` — runtime image definition.
